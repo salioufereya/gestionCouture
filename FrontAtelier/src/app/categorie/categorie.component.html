@@ -1,0 +1,115 @@
+<div class="flex justify-center items-center">
+    <div class="flex px-10 pt-20  w-11/12  items-center justify-center ">
+
+
+        <div class="w-8/12 shadow-md">
+            <div class="flex justify-between ">
+                <label for="" class="px-5">Catégorie</label>
+                <div class="flex">
+                    <label for="" class="px-5">Ajout</label>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer" (change)="onChangeCheckBox($event)">
+                        <div
+                            class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                        </div>
+                        <span class="px-4">Edit</span>
+                    </label>
+                </div>
+            </div>
+            <form action="" [formGroup]="libelleForm" (ngSubmit)="ok()">
+                <div class="flex justify-evenly pt-5">
+                    <div class="flex flex-col">
+                        <div class="flex flex-col">
+                            <div>
+                                Libelle
+                                <input type="text" placeholder="libelle"
+                                    class="pl-5 h-8 border-2 border-black-600 rounded-md ml-3 " #box
+                                    (input)="onKey(box.value)" formControlName="libelle" id="name" (blur)="onBlur()"
+                                    [disabled]="true">
+                            </div>
+
+                            <div class="flex flex-row px-4 justify-content-between pt-5">
+                                <label for="" class="pr-3">Type</label>
+ 
+                                <select  formControlName="type" id="" for=""
+                                    class="py-2 px-4 pr-9 block w-75 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400">
+                                    <option value="confection">Confection</option>
+                                    <option value="vente">Vente</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <span class="pl-20 text-rose-600" *ngIf="condition">Ce catégorie existe déjà</span><br>
+                        <span class="pl-20 text-rose-600" *ngIf="condition1"> Veillez saisir minimum trois
+                            caractere</span>
+                        <span *ngIf="success" class="text-green-500">Catégorie ajoutée avec success</span>
+                        <span class="text-rose-500" *ngIf="supp">Catégorie supprimée avec success</span>
+                        <span class="text-blue-700" *ngIf="modifie">Modifiée avec success</span>
+                    </div>
+                    <div><button class="bg-indigo-800 w-40 h-8 rounded-md text-white"
+                            [disabled]="!btnAjouter">Ok</button>
+                    </div>
+
+                </div>
+            </form>
+
+            <div class="flex justify-around mx-auto pt-5">
+                <h3>Liste des catégories</h3>
+                <button class="bg-red-600 w-40 h-8 rounded-md text-white" [disabled]="!btnSupprimer" type="submit"
+                    (click)="deleteCategories()">Supprimer</button>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg flex flex-col items-center pb-5">
+
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="p-4">
+                                <input type="checkbox" (change)="selectAll($event)" id="1" [(ngModel)]="selectH"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    [disabled]="canette">
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Libelle
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let categorie of categories"
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="w-4 p-4">
+                                <div class="flex items-center">
+                                    <input id="{{categorie.id}}" type="checkbox" (change)="pushIds($event)"
+                                        [(ngModel)]="categorie.checked"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                        [disabled]="canette">
+                                    <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                </div>
+                            </td>
+                            <td scope="row" *ngIf="categorie.id"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <button [disabled]="!clikable"
+                                    (click)="getValue(categorie.libelle,categorie.id)">{{categorie.libelle}}</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--Pagination-->
+
+
+                <nav>
+                    <ul class="text-gray-900 flex">
+                        <li *ngFor="let item of lien" (click)="getUrl(item.url)">
+                            <span [innerHTML]="item.label" class="px-3 py-2 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-gray-200  rounded-2xl
+                                         {{ item.active ? 'bg-blue-500 text-white font-bold' : '' }}">
+                            </span>
+                        </li>
+                    </ul>
+                </nav>
+                <!--FinPagination-->
+            </div>
+
+
+        </div>
+    </div>
+</div>

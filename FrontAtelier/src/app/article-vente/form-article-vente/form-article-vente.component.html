@@ -1,0 +1,151 @@
+<form class="w-full overflow-x-auto shadow-md sm:rounded-lg p-4">
+    <div class="grid grid-cols-3">
+        <div class="col-span-2 w-full">
+
+            <div class="flex flex-row w-3/4 pt-5">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-first-name">
+                        Libelle
+                    </label>
+                    <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-first-name" type="text" placeholder="Jane">
+                </div>
+                <div class="w-full md:w-1/2 px-3 ml-5">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                        for="grid-last-name">
+                        Catégorie </label>
+                    <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-last-name" type="text" placeholder="Doe">
+                </div>
+            </div>
+
+            <div class="flex flex-row w-3/4 pt-5">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mr-3 flex justify-content-center align-middle">
+                    <label for="default-checkbox"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 mr-5">
+                        Promo</label>
+                    <input id="default-checkbox" type="checkbox" value=""
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+                </div>
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 flex flex-row align-items-center ">
+                    <label for="default-checkbox"
+                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 mr-5">
+                        Valeur</label>
+                    <input
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="grid-last-name" type="text" placeholder="Doe">
+
+                </div>
+            </div>
+            <div class="mt-4">
+                <h2>Listes des articls de confections</h2>
+
+
+
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Libelle
+                                </th>
+
+                                <th scope="col" class="px-6 py-3">
+                                    Quantité
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-1 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <input type="text" id="libelle" name="libelle"
+                                        class="w-100 border rounded-lg px-2 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                                        placeholder="Libellé" id="libelle" name="libelle" formControlName="libelle">
+                                </th>
+                                <td class="px-6 py-1">
+                                    <input type="text" id="libelle" name="libelle"
+                                        class="w-100 border rounded-lg px-2 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                                        placeholder="Quantité" id="libelle" name="libelle" formControlName="libelle">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-1 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <input type="text" id="libelle" name="libelle"
+                                        class="w-100 border rounded-lg px-2 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                                        placeholder="Libellé" id="libelle" name="libelle" formControlName="libelle">
+                                </th>
+                                <td class="px-6 py-1">
+                                    <input type="text" id="libelle" name="libelle"
+                                        class="w-100 border rounded-lg px-2 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                                        placeholder="Quantité" id="libelle" name="libelle" formControlName="libelle">
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-1 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <input type="text" id="libelle" name="libelle"
+                                        class="w-100 border rounded-lg px-2 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                                        placeholder="Libellé" id="libelle" name="libelle" formControlName="libelle">
+                                </th>
+                                <td class="px-6 py-1">
+                                    <input type="text" id="libelle" name="libelle"
+                                        class="w-100 border rounded-lg px-2 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                                        placeholder="Quantité" id="libelle" name="libelle" formControlName="libelle">
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="flex flex-row items-center mt-2">
+
+                <label for="" class="">Cout de la fabrication</label>
+                <input type="text" placeholder="Reference"
+                    class="w-1/4  mx-3 border rounded-lg  py-1 focus:outline-none focus:ring focus:border-blue-500"
+                    name="ref" formControlName="ref" readonly>
+                <label for="">Marge/article</label>
+                <input type="text" placeholder="Reference"
+                    class=" mx-2 w-1/4 border rounded-lg  py-1 focus:outline-none focus:ring focus:border-blue-500"
+                    name="ref" formControlName="ref" readonly>
+            </div>
+            <div class="flex flex-row items-center mt-2">
+                <label for="" class="pr-10">Prix vente</label>
+                <input type="text" placeholder="Reference"
+                    class=" w-1/4 border rounded-lg  py-1 focus:outline-none focus:ring focus:border-blue-500"
+                    name="ref" formControlName="ref" readonly>
+            </div>
+        </div>
+        <div class="mt-4 flex flex-col p-4 items-center justify-center ">
+            <div class="w-2/3 ">
+                <img src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-2-800x800.jpg"
+                    alt="..." class="shadow rounded-full max-w-full h-auto align-middle border-none" />
+            </div>
+            <div class="flex flex-col items-center mt-5">
+                <label for="">Ref</label>
+                <input type="text" placeholder="Reference"
+                    class="w-4/5 border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                    name="ref" formControlName="ref" readonly>
+            </div>
+             <div class="pt-10">
+                <button type="button"
+                class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Save</button>
+             </div>
+            
+        </div>
+
+
+
+
+
+
+    </div>
+
+</form>

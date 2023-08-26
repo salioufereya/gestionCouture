@@ -1,0 +1,9 @@
+<nav class="py-5">
+    <ul class="text-gray-900 flex items-center justify-center">
+        <li *ngFor="let item of dataChildToPaginate.links" (click)="paginate(item.url)">
+            <span [innerHTML]="item.label" class="px-3 py-2 cursor-pointer transition-colors duration-300 ease-in-out hover:bg-gray-200  rounded-2xl
+            {{ item.active ? 'bg-blue-500 text-white font-bold' : '' }}">
+            </span>
+        </li>
+    </ul>
+</nav>

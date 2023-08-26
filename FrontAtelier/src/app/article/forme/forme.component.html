@@ -1,0 +1,162 @@
+<div class="p-8 shadow-lg rounded-lg border-solid border w-full">
+    <form action="" (ngSubmit)="submitForm()" [formGroup]="forme" enctype="multipart/form-data">
+        <div class="flex flex-row items-center justify-center">
+            <div class="flex flex-col">
+                <div class="grid grid-cols-3 gap-4 mb-1">
+                    <div>
+                        <label for="libelle" class="block  font-semibold text-gray-700 mr-10">Libellé</label>
+                    </div>
+                    <div class="col-span-2">
+                        <input type="text" id="libelle" name="libelle"
+                            class="w-100 border rounded-lg px-2 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                            placeholder="Libellé" id="libelle" name="libelle" formControlName="libelle"
+                            (change)=" getFirst3libelle($event)">
+                    </div>
+                </div>
+                <div class="text-red-500" *ngIf="articleExisteDeja">
+                    Cet article existe deja
+                </div>
+                <div *ngIf="libelle!.invalid &&  libelle?.touched" class="text-rose-600">
+                    <div *ngIf="libelle!.errors?.['required']">
+                        le libelle est obligatoire.
+                    </div>
+                    <div *ngIf="libelle!.errors?.['minlength']">
+                        Name must be at least 4 characters long.
+                    </div>
+                    <div *ngIf="libelle!.errors?.['pattern']">
+                        Le libelle ne contenir que des caracteres
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mb-1">
+                    <div>
+                        <label for="prix" class="block  font-semibold text-gray-700 ">Prix</label>
+
+                    </div>
+                    <div class="col-span-2">
+                        <input type="text" id="libelle" name="libelle"
+                            class="w-100 border rounded-lg px-2 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                            placeholder="Libellé" name="prix" formControlName="prix">
+                    </div>
+                </div>
+                <div *ngIf="prix!.invalid &&  prix?.touched" class="text-rose-600">
+                    <div *ngIf="libelle!.errors?.['required']">
+                        le prix est obligatoire.
+                    </div>
+                    <div *ngIf="prix!.errors?.['minlength']">
+                        Name must be at least 4 characters long.
+                    </div>
+                    <div *ngIf="prix!.errors?.['pattern']">
+                        le prix ne doit contenir que valeur numeric
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mb-1">
+                    <div>
+                        <label for="stock" class="block  font-semibold text-gray-700">Stock</label>
+                    </div>
+                    <div class="col-span-2">
+                        <input type="text" id="stock" name="stock"
+                            class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                            placeholder="Stock" name="stock" formControlName="stock">
+                    </div>
+                </div>
+                <div *ngIf="stock!.invalid &&  stock?.touched" class="text-rose-600">
+
+                    <div *ngIf="stock!.errors?.['required']">
+                        le stock est obligatoire.
+                    </div>
+                    <div *ngIf="stock!.errors?.['minlength']">
+                        stock must be at least 4 characters long.
+                    </div>
+                    <div *ngIf="stock!.errors?.['pattern']">
+                        le stock ne doit contenir que valeur numeric
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mb-1">
+                    <div>
+                        <label for="categorie" class="block font-semibold text-gray-700">Catégorie</label>
+                    </div>
+                    <div class="col-span-2">
+                        <select class="border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                            name="categorie" formControlName="categorie_id" (change)="onCategorie($event)"  >
+                            <option value="">Sélectionner la catégorie</option>
+                            <option *ngFor="let item of categories" [value]="item.id" test="item.libelle" >
+                                {{ item.libelle }}
+                            </option>
+                        </select>
+                        <div class="text-red-600" *ngIf="libelleFalse">
+                            Veillez saisir le libelle d'abord
+                        </div>
+                    </div>
+
+                    <div *ngIf="libelle!.invalid &&  libelle!.touched" class="text-rose-600">
+                        <div *ngIf="libelle!.errors?.['required']">
+                            le categorie est obligatoire.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="grid grid-cols-3 mb-1">
+                    <div>
+                        <label for="ref" class="block  font-semibold text-gray-700">Fournisseur</label>
+                    </div>
+                    <div class="col-span-2">
+                        <input type="text" id="ref" name="ref"
+                            class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                            placeholder="Référence" #newFournisseur (input)="getFournie($event)" (change)="vide($event)">
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex flex-col items-center  pl-10 ">
+
+                <div class=" w-32">
+                    <div class="position-relative">
+                        <input type="file" class="absolute opacity formatImage" name="photo" formControlName="photo"
+                            (change)="handleFileInput($event)" #testA />
+                        <img [src]="forme.get('photo')!.value"
+                            alt="" class="formatImage flex items-center w-full">
+                    </div>
+                </div>
+                <div class="flex flex-col items-center mt-2">
+                    <label for="">Ref</label>
+                    <input type="text" placeholder="Reference"
+                        class="w-4/5 border rounded-lg px-4 py-2 focus:outline-none focus:ring focus:border-blue-500"
+                        name="ref" formControlName="ref" readonly>
+                </div>
+                <div *ngIf="ref!.invalid &&  ref!.touched" class="text-rose-600">
+
+                    <div *ngIf="ref!.errors?.['required']">
+                        la Ref est obligatoire.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-row items-center justify-center text-black">
+            <div *ngFor="let element of fournisseurToChoice">
+                <ul>
+                    <li (click)="push($event)" [value]="element.id" [id]="element.libelle"
+                        class="bg-gray-300 ml-5 rounded-md p-1 text-small">
+                        {{ element.libelle}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex items-center justify-center pt-2">
+            <div class="w-4/6 bg-slate-300 h-10 text-black flex justify-center items-center">
+                <ul *ngFor="let item of fournisseurDisplay">
+                    <li (click)="depush($event)" [value]="item.id" [id]="item.libelle"
+                        class="bg-indigo-300 mr-4 rounded-md p-1 hover:text-red-600">
+                        {{item.libelle}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex items-center justify-center ">
+            <button type="submit" class="bg-blue-600 p-2 rounded-md hover:bg-sky-700  text-white"
+                [disabled]="forme.invalid || fournisseurChoisis.length===0" [innerHTML]=" bool? Envoyer : Edit" (click)="btnValu($event)"></button>
+        </div>
+    </form>
+</div>

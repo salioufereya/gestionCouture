@@ -1,0 +1,20 @@
+<div class="w-full flex justify-center items-center">
+    <div class="w-3/4">
+        <h1>Articles</h1>
+       
+        <div class="text-green-400" *ngIf="existA">
+            Article ajouté avec succes
+        </div>
+        <div class="text-red-700 flex items-center" *ngIf="supp">
+            Article supprimé avec succes
+        </div>
+        <div class="text-blue-700 flex items-center" *ngIf="modif">
+            Article modifié avec succes
+        </div>
+        <app-forme [categories]="categories"
+            [fournisseurFromParent]="fournisseurs" (formDataEvent)="receiveFormData($event)" [DataToEdit]="articleToEdit"
+            [articles]="articlesAll"   ></app-forme>
+        <app-liste [liste]="articles" (itemInterClick)="ItemParentClick($event)" (itemInterEditClick)="ItemParentEditClick($event)"></app-liste>
+        <app-pagination [dataChildToPaginate]="dataToPaginate" (paginer)="getUrl($event)"></app-pagination>
+    </div>
+</div>
